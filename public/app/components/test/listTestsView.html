@@ -1,0 +1,58 @@
+<div >
+    <div class="page-header">
+        <h1>List of all tests</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div ng-show="testList.length">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{'TEST_NAME' | translate}}</th>
+                            <th>{{'COURSE_NAME' | translate}}</th>
+                            <th colspan="2">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="test in testList"  class="vcenter-datas">
+                            <td>{{test.id}}</td>
+                           <td>{{test.name}}</td>
+                           <td>{{test.course_name}}</td>
+                           <td>
+                                <button class="btn btn-lg btn-default" type="button"  ng-click="openTestForm(test)">
+                                    {{'TEST_LABEL_UPDATE_TEST' | translate}}
+                                </button>
+                            </td>
+                           <td>
+                                <button class="btn btn-lg btn-danger" type="button" ng-click="deleteTest(test.id)">
+                                    {{'TEST_LABEL_DELETE_TEST' | translate}}
+                                </button>
+                            </td>
+                        </tr>    
+                    </tbody>
+                </table>
+            </div>
+            <div ng-show="!testList.length">
+                {{'TEST_LABEL_NO_TEST' | translate}}
+            </div>
+        </div>
+    </div>
+
+
+    <div ng-controller="PaginationController">
+        <div>
+            <uib-pagination items-per-page="itemsPerPage" total-items="getTotalItems()" ng-model="currentPage" ng-change="pageChanged('test')" ng-show="showPagination()"></uib-pagination>
+        </div>
+        <div>
+            <button type="button" class="btn btn-lg btn-primary" ng-click="openTestForm()">
+                {{'TEST_LABEL_ADD_TEST' | translate}}
+            </button>    
+        </div>
+    </div>
+
+
+
+
+</div>

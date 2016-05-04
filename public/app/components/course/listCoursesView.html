@@ -1,0 +1,56 @@
+<div >
+    <div class="page-header">
+        <h1>{{'COURSE_LIST' | translate}}</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div ng-show="courseList.length">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{'COURSE_NUMBER' | translate}}</th>
+                            <th>{{'COURSE_NAME' | translate}}</th>
+                            <th colspan="2">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="course in courseList"  class="vcenter-datas">
+                            <td>{{course.id}}</td>
+                           <td>{{course.number}}</td>
+                           <td>{{course.name}}</td>
+                           <td>
+                                <button class="btn btn-lg btn-default" type="button" ng-controller="PopUpCreateUpdateCourseController" 
+                                        ng-click="updateOrCreateCourse()">
+                                    {{'COURSE_LABEL_UPDATE_COURSE' | translate}}
+                                </button>
+                            </td>
+                           <td>
+                                <button class="btn btn-lg btn-danger" type="button" ng-click="deleteCourse(course.id)">
+                                    {{'COURSE_LABEL_DELETE_COURSE' | translate}}
+                                </button>
+                           </td>
+                        </tr>    
+                    </tbody>
+                </table>
+            </div>
+            <div ng-show="!courseList.length">
+                {{'COURSE_LABEL_NO_COURSE' | translate}}
+            </div>
+        </div>
+    </div>
+
+
+
+    <div ng-controller="PaginationController">
+        <div ng-show="showPagination()">
+            <uib-pagination items-per-page="itemsPerPage" total-items="getTotalItems()" ng-model="currentPage" ng-change="pageChanged('course')" ></uib-pagination>
+        </div>
+
+        <div ng-controller="PopUpCreateUpdateCourseController">
+            <button type="button" class="btn btn-lg btn-primary" ng-click="updateOrCreateCourse()">{{'COURSE_LABEL_ADD_COURSE' | translate}}</button>    
+        </div>
+    </div>
+
+</div>

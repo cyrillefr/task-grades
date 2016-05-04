@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="A very simple grade app ruby/sinatra + AngularJS">
+
+    <title>Students grades managment</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="/assets/css/bootstrap-theme.css"/>
+    <!-- Custom styles for this template (from bootstrap) -->
+    <link rel="stylesheet" href="/assets/css/theme.css"/>
+    <link rel="stylesheet" href="/assets/css/app.css"/>
+
+
+  </head>
+
+  <body role="document" ng-app="studentGradesApp" ng-controller="StudentGradesAppController">
+  <div >
+    <!-- Fixed navbar -->
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container" >
+        <div class="navbar-header">
+          <button type="button"  class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Students Grades Managment</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse"  uib-collapse="navCollapsed">
+          <ul class="nav navbar-nav">
+            <li><a ng-click="delNotifications()" ng-href='#listStudents'>{{ 'STUDENT_MENU_BAR' | translate }}</a></li>
+            <li><a ng-click="delNotifications()" ng-href="#listCourses">{{'COURSE_MENU_BAR' | translate}}</a></li>
+            <li><a ng-click="delNotifications()" ng-href="#listTests">{{'TEST_MENU_BAR' | translate}}</a></li>
+            <li class="dropdown" uib-dropdown keyboard-nav dropdown-append-to="appendToEl">
+              <a id="btn-append-to" class="dropdown-toggle" uib-dropdown-toggle>
+                  {{'CHANGE_LANGUAGE_MENU_BAR' | translate}}<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to">
+                <li role="menuitem" class = "en"><a ng-click="changeLocale('en')">English</a></li>
+                <li role="menuitem" class = "fr"><a ng-click="changeLocale('fr')">Fran&ccedil;ais</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+
+  <div class="container theme-showcase" role="main">
+
+    <div id="notifications" ng-controller="NotificationsController" ng-show="notifications.length>0">
+      <uib-alert  class="alert alert-danger">
+        <ul>
+          <li ng-repeat="notification in notifications">
+            {{notification}}
+          </li>
+        </ul>
+      </uib-alert>
+    </div>
+
+      <!-- templates -->
+      <div ng-view></div>
+
+    </div>
+     <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src = "/assets/libs/angular-1.4.8/angular.js"></script>
+    <script src = "/assets/libs/angular-1.4.8/angular-route.js"></script>
+    <script src = "/assets/libs/angular-1.4.8/angular-locale_fr-fr.js"></script>
+    <script src = "/assets/libs/angular-translate.js"></script>
+    <script src = "/assets/libs/ui-bootstrap-tpls-1.0.3.js"></script>
+    <script src = "/assets/libs/event.js"></script>
+    <script src = "/app/app.module.js"></script>
+    <script src = "/app/app.routes.js"></script>
+    <script src = "/app/shared/translation.service.js"></script>
+    <script src = "/app/shared/pagination.controller.js"></script>
+    <script src = "/app/shared/notifications.controller.js"></script>
+    <script src = "/app/shared/notifications.service.js"></script>
+    <script src = "/app/shared/app.controller.js"></script>
+    <script src = "/app/components/student/student.service.js"></script>
+    <script src = "/app/components/student/student.controller.js"></script>
+    <script src = "/app/components/student/student-create-update.controller.js"></script>
+    <script src = "/app/components/course/course.service.js"></script>
+    <script src = "/app/components/course/course.controller.js"></script>
+    <script src = "/app/components/course/course-create-update.controller.js"></script>
+    <script src = "/app/components/test/test.service.js"></script>
+    <script src = "/app/components/test/test.controller.js"></script>
+    <script src = "/app/components/test/list-tests.controller.js"></script>
+
+
+  </body>
+</html>

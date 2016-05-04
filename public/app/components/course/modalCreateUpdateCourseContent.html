@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{title}}</h3>
+</div>
+<div class="modal-body">
+    <div class="container-fluid" style="heigth: 100%">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4 form-group required">
+                    <label class="control-label" for="number">{{'COURSE_POPUP_NUMBER_COURSE' | translate}}</label>
+                </div>
+                <div class="col-md-8">
+                    <input type = "text" required="required" style="width: 100%; " id="number" ng-model="course.number"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4  form-group required">
+                    <label class="control-label" for="name">{{'COURSE_POPUP_NAME_COURSE' | translate}}</label>
+                </div>
+                <div class="col-md-8">
+                    <input type = "text" style="width: 100%; " id="name" ng-model="course.name"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-lg btn-default" type="button" ng-click="ok()">{{'COURSE_POPUP_OK' | translate}}</button>
+    <button class="btn btn-lg btn-default" type="button" ng-click="cancel()">{{'COURSE_POPUP_CANCEL' | translate}}</button>
+</div>

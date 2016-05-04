@@ -1,0 +1,55 @@
+<div >
+    <div class="page-header">
+        <h1>{{'STUDENT_LIST' | translate}}</h1>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div ng-show="studentList.length">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{'STUDENT_FIRST_NAME' | translate}}</th>
+                            <th>{{'STUDENT_LAST_NAME' | translate}}</th>
+                            <th colspan="2">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="student in studentList" class="vcenter-datas">
+                            <td>{{student.id}}</td>
+                           <td>{{student.first_name}}</td>
+                           <td>{{student.last_name}}</td>
+                           <td>
+                                <button class="btn btn-lg btn-default" type="button" ng-controller="PopUpCreateUpdateStudentController" 
+                                ng-click="updateOrCreateStudent()">
+                                    {{'STUDENT_LABEL_UPDATE_STUDENT' | translate}}
+                                </button></td>
+                           <td>
+                                <button class="btn btn-lg btn-danger" type="button" ng-click="deleteStudent(student.id)">
+                                    {{'STUDENT_LABEL_DELETE_STUDENT' | translate}}
+                                </button>
+                            </td>
+                        </tr>    
+                    </tbody>
+                </table>
+            </div>
+            <div ng-show="!studentList.length">
+                {{'STUDENT_LABEL_NO_STUDENT' | translate}}
+            </div>
+        </div>
+    </div>
+
+    <div ng-controller="PaginationController">
+        <div>
+            <uib-pagination items-per-page="itemsPerPage" total-items="getTotalItems()" ng-model="currentPage" ng-change="pageChanged('student')" ng-show="showPagination()"></uib-pagination>
+        </div>
+        <div ng-controller="PopUpCreateUpdateStudentController">
+            <button type="button" class="btn btn-lg btn-primary" ng-click="updateOrCreateStudent()">
+                {{'STUDENT_LABEL_ADD_STUDENT' | translate}}
+            </button>    
+        </div>
+    </div>
+
+</div>

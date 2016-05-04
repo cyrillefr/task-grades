@@ -1,0 +1,44 @@
+/*Because in bootstrap.css, it is top*/
+.table > tbody > tr.vcenter-datas > td {
+    vertical-align: middle;
+}
+
+/*Styling the menu drop down*/
+.navbar ul li.dropdown {
+    cursor: pointer;
+}
+
+.navbar ul.dropdown-menu li{
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.navbar ul.dropdown-menu li.en{
+    background-image: url('/assets/img/uk.png'); 
+}
+
+.navbar ul.dropdown-menu li.fr{
+    background-image: url('/assets/img/fr.png'); 
+}
+
+/*Styling a required element*/
+.form-group.required .control-label:after { 
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 2px;
+    top:1px;
+}
+
+/*Positionning (vertical) with flexbox model*/
+.Align{
+        display: flex;
+        align-items: center;
+        min-height: 24em;
+        justify-content: center;
+}
+
+.Align-item {
+        flex: 1;
+}
