@@ -1,0 +1,18 @@
+en:
+  activerecord:
+    errors:
+      models:
+        student:
+          attributes:
+            first_name:
+              blank: First name cannot be blank, Task not saved
+            last_name:
+              blank: Last name cannot be blank, Task not saved
+  custom:
+    errors:
+      custom:
+        no_data_to_proceed: No data to proceed
+        not_enough_data_to_proceed: Not enough data to proceed
+        tried_delete_unknown_student: Tried to delete unknown student
+        tried_delete_unknown_course: Tried to delete unknown course
+        tried_delete_unknown_test: Tried to delete unknown test

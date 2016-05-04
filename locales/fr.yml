@@ -1,0 +1,18 @@
+fr:
+  activerecord:
+    errors:
+      models:
+        student:
+          attributes:
+            first_name:
+              blank:  Veuillez renseigner le prénom afin de procéder à l'enregistrement
+            last_name:
+              blank: Veuillez renseigner le nom afin de procéder à l'enregistrement
+  custom:
+    errors:
+      custom:
+        no_data_to_proceed: Pas de données transmises
+        not_enough_data_to_proceed: Pas assez de données pour procéder à l'enregistrement
+        tried_delete_unknown_student: Etudiant inconnu
+        tried_delete_unknown_course: Matière inconnue
+        tried_delete_unknown_test: Examen inconnu
