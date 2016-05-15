@@ -11,37 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210152723) do
+ActiveRecord::Schema.define(version: 20160515193631) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "course", force: :cascade do |t|
-    t.string "number", limit: 255
-    t.string "name",   limit: 255
+    t.string "number"
+    t.string "name"
   end
 
   create_table "course_student", id: false, force: :cascade do |t|
-    t.integer "student_id", limit: 4
-    t.integer "course_id",  limit: 4
+    t.integer "student_id"
+    t.integer "course_id"
   end
 
   add_index "course_student", ["student_id", "course_id"], name: "index_course_student_on_student_id_and_course_id", unique: true, using: :btree
 
   create_table "student", force: :cascade do |t|
-    t.string "first_name", limit: 255
-    t.string "last_name",  limit: 255
+    t.string "first_name"
+    t.string "last_name"
   end
 
   create_table "test", force: :cascade do |t|
-    t.integer  "course_id",      limit: 4
-    t.string   "name",           limit: 255
+    t.integer  "course_id"
+    t.string   "name"
     t.datetime "date_scheduled"
   end
 
   add_index "test", ["course_id"], name: "index_test_on_course_id", using: :btree
 
   create_table "test_grade", force: :cascade do |t|
-    t.integer "test_id",    limit: 4
-    t.integer "student_id", limit: 4
-    t.string  "note",       limit: 255
+    t.integer "test_id"
+    t.integer "student_id"
+    t.string  "note"
   end
 
   add_index "test_grade", ["student_id"], name: "index_test_grade_on_student_id", using: :btree

@@ -1,5 +1,6 @@
-class CreateTables < ActiveRecord::Migration
-    def change
+class CreateStudentAndTest < ActiveRecord::Migration
+
+   def change
 
          create_table :student do |t|
             t.string :first_name
@@ -33,4 +34,5 @@ class CreateTables < ActiveRecord::Migration
         add_index :test_grade, [:test_id, :student_id], :unique => true
 
     end
+
 end

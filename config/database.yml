@@ -1,8 +1,8 @@
 development:
-    adapter: mysql2
+    adapter: postgresql
     database: grades
     pool: 5
-    username: root
-    password: root
+    username: grades
+    password: grades
     host: localhost
     encoding: utf8
