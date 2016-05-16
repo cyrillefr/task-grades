@@ -5,9 +5,9 @@
         .module('studentGradesApp')
         .factory('courseService', courseService);
 
-    courseService.$inject = ['$http'];
+    courseService.$inject = ['$http', 'notificationsService'];
 
-    function courseService($http) {
+    function courseService($http, notificationsService) {
 
 
         var courseService = {

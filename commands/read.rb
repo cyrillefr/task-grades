@@ -6,7 +6,7 @@ module Read
 
 
     def get_students (limit_value, offset_value)
-        Student.limit(limit_value).offset(offset_value)
+        Student.order(:id).limit(limit_value).offset(offset_value)
     end
 
 
@@ -25,10 +25,6 @@ module Read
         course.student.size
     end
 
-    def list_of_courses (limit_value, offset_value)
-        Course.limit(limit_value).offset(offset_value) 
-    end
-
 
     def student_detail_courses (student_id)
         sql_request = "SELECT c.*, CASE (select student_id from course_student where c.id = course_id and student_id = "\
@@ -38,14 +34,14 @@ module Read
 
 
     def list_of_courses (limit_value, offset_value)
-        courseList = Course.limit(limit_value).offset(offset_value)
+        courseList = Course.order(:id).limit(limit_value).offset(offset_value)
         courseCount = Course.count
         {"records": courseList, "count": courseCount}.to_json
     end
 
 
     def list_of_tests (limit_value, offset_value) 
-        testList = Test.select("test.id, course_id, test.name as name, course.name as course_name").joins(:course).limit(limit_value).offset(offset_value)
+        testList = Test.select("test.id, course_id, test.name as name, course.name as course_name").joins(:course).order(:id).limit(limit_value).offset(offset_value)
         testCount = Test.count
         {"records": testList, "count": testCount}.to_json
     end

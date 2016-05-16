@@ -21,12 +21,12 @@
                            <td>{{test.name}}</td>
                            <td>{{test.course_name}}</td>
                            <td>
-                                <button class="btn btn-lg btn-default" type="button"  ng-click="openTestForm(test)">
+                                <button class="btn btn-lg btn-default" type="button"  ng-click="delNotifications();openTestForm(test)">
                                     {{'TEST_LABEL_UPDATE_TEST' | translate}}
                                 </button>
                             </td>
                            <td>
-                                <button class="btn btn-lg btn-danger" type="button" ng-click="deleteTest(test.id)">
+                                <button class="btn btn-lg btn-danger" type="button" ng-click="delNotifications();deleteTest(test.id)">
                                     {{'TEST_LABEL_DELETE_TEST' | translate}}
                                 </button>
                             </td>
@@ -46,7 +46,7 @@
             <uib-pagination items-per-page="itemsPerPage" total-items="getTotalItems()" ng-model="currentPage" ng-change="pageChanged('test')" ng-show="showPagination()"></uib-pagination>
         </div>
         <div>
-            <button type="button" class="btn btn-lg btn-primary" ng-click="openTestForm()">
+            <button  type="button" class="btn btn-lg btn-primary" ng-click="delNotifications();openTestForm()">
                 {{'TEST_LABEL_ADD_TEST' | translate}}
             </button>    
         </div>

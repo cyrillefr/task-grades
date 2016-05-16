@@ -39,7 +39,7 @@
                 .catch(operationFailed);
 
                 function getStudentsByCourseComplete(response) {
-                    studentService.studentListByCourse = response.data || [];
+                    studentService.studentListByCourse = response.data || {count: 0, records: []};
                 }
         }
 

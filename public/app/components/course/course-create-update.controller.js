@@ -44,8 +44,19 @@
                  courseService
                     .createOrUpdateCourse(course)
                     .then(function () {
-                        var sql_offset = (Math.floor((courseService.totalItems + 1) / $scope.itemsPerPage)) * $scope.itemsPerPage;
-                        var nextPage = Math.ceil((courseService.totalItems + 1) / $scope.itemsPerPage);
+                        var itemsPerPage = $scope.$parent.sql_limit;
+
+                        //select correct page number
+                        if(course.toBeUpdated) {
+                            var sql_offset = $scope.sql_offset;
+                        } else {
+                            var sql_offset = (Math.floor((courseService.totalItems ) / itemsPerPage)) * itemsPerPage;
+                        }
+
+                        //var sql_offset = (Math.floor((courseService.totalItems ) / itemsPerPage)) * itemsPerPage;
+
+
+                        var nextPage = Math.ceil((courseService.totalItems + 1) / itemsPerPage);
                         
                         $scope.loadCoursesData($scope.sql_limit, sql_offset)
                             .then($timeout($scope.setPage, 10, true, nextPage));

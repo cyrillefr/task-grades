@@ -44,12 +44,13 @@
         $scope.isNewTest = isNewTest;
         $scope.saveTest = saveTest;        
         $scope.cancelTest = cancelTest;
+        $scope.isNotValidTest = isNotValidTest;
 
 
         /* -------------------------- Functions ------------------------------------ */
         function getCourseRegisteredStudents (course_id) {
             studentService.getStudentsByCourse(course_id).then(function() {
-                $scope.studentList =  studentService.studentListByCourse.map(function(obj){
+                $scope.studentList =  studentService.studentListByCourse.records.map(function(obj){
                     obj.grade = "";
                     return obj;
                 });
@@ -58,7 +59,16 @@
 
         function isNewTest() {
             return $scope.status == 'new';
-        };
+        }
+
+
+        function isNotValidTest() {
+            if ($scope.testName) {
+                return $scope.testName.length == 0;
+             } else
+                return true;
+        }
+
 
         //populate html select of courses(new test)
         //10000 to bypass limit here cf. MySQL doc

@@ -61,10 +61,12 @@
             </div>
         </div>
 
-        <div >
-            <button type="button" class="btn btn-lg btn-primary" ng-click="saveTest()">{{'TEST_FORM_SAVE_TEST' | translate}}</button>
-            &nbsp;
-            <button type="button" class="btn btn-lg btn-primary" ng-click="cancelTest()">{{'TEST_FORM_TEST_CANCEL' | translate}}</button>  
+        <div ng-show="studentList.length">
+            <div >
+                <button type="button" class="btn btn-lg btn-primary" ng-click="saveTest()" ng-disabled="isNotValidTest()">{{'TEST_FORM_SAVE_TEST' | translate}}</button>
+                &nbsp;
+                <button type="button" class="btn btn-lg btn-primary" ng-click="cancelTest()">{{'TEST_FORM_TEST_CANCEL' | translate}}</button>  
+            </div>
         </div>
 
 

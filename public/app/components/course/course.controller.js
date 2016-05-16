@@ -5,10 +5,10 @@
         .module('studentGradesApp')
         .controller('CourseController', CourseController);
 
-    CourseController.$inject = ['$scope', '$http', 'courseService', 'notificationsService'];
+    CourseController.$inject = ['$scope', '$http', 'courseService'];
 
 
-    function CourseController($scope, $http, courseService, notificationsService) {
+    function CourseController($scope, $http, courseService) {
 
         //Init variables
         $scope.sql_offset = $scope.$parent.sql_offset_default;
