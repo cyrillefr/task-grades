@@ -53,8 +53,6 @@
                             var sql_offset = (Math.floor((courseService.totalItems ) / itemsPerPage)) * itemsPerPage;
                         }
 
-                        //var sql_offset = (Math.floor((courseService.totalItems ) / itemsPerPage)) * itemsPerPage;
-
 
                         var nextPage = Math.ceil((courseService.totalItems + 1) / itemsPerPage);
                         
