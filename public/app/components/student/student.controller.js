@@ -11,10 +11,11 @@
     function StudentController($scope, $http, studentService) {
 
         //Init variables
-        $scope.sql_offset = $scope.$parent.sql_offset_default;
+        var sql_offset = $scope.$parent.sql_offset_default;
+
 
         //Initial load
-        loadStudentsData($scope.sql_limit, $scope.sql_offset);
+        loadStudentsData($scope.sql_limit, sql_offset);
 
         //Pass to scope some functions
         $scope.loadStudentsData = loadStudentsData;
@@ -34,7 +35,7 @@
                 studentService
                     .deleteStudent(id)
                     .then(function () {
-                        $scope.loadStudentsData($scope.sql_limit, $scope.sql_offset);
+                        $scope.loadStudentsData($scope.sql_limit, sql_offset);
                     });
             }
         };

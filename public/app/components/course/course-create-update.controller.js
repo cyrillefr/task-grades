@@ -48,7 +48,7 @@
 
                         //select correct page number
                         if(course.toBeUpdated) {
-                            var sql_offset = $scope.sql_offset;
+                            var sql_offset = $scope.sql_offset_current;
                         } else {
                             var sql_offset = (Math.floor((courseService.totalItems ) / itemsPerPage)) * itemsPerPage;
                         }

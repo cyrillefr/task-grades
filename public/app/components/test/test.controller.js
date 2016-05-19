@@ -5,10 +5,10 @@
         .module('studentGradesApp')
         .controller('TestController', TestController);
 
-    TestController.$inject = ['$scope', '$routeParams', '$http', '$translate', 'courseService', 'studentService', 'testService', '$location', 'notificationsService'];
+    TestController.$inject = ['$scope', '$routeParams', '$http', '$translate', 'courseService', 'studentService', 'testService', '$location', 'notificationsService', '$timeout'];
 
 
-    function TestController($scope, $routeParams, $http, $translate, courseService, studentService, testService, $location, notificationsService) {
+    function TestController($scope, $routeParams, $http, $translate, courseService, studentService, testService, $location, notificationsService, $timeout) {
 
 
         //Init
@@ -55,7 +55,7 @@
                     return obj;
                 });
             }); 
-        };
+        }
 
         function isNewTest() {
             return $scope.status == 'new';
@@ -81,7 +81,7 @@
             });
 
 
-        };
+        }
 
         function saveTest() {
             testService
@@ -93,9 +93,18 @@
                     test_name: $scope.testName
                 })
                 .then(function() {
+                    var itemsPerPage = $scope.$parent.sql_limit;
+
+                    //select correct page number
+                    if ($scope.isNewTest() === false) {
+                        $scope.$parent.testCreatedOrUpdated = $scope.$parent.TEST_UPDATED;
+                    } else {
+                        $scope.$parent.testCreatedOrUpdated = $scope.$parent.TEST_CREATED;
+                    }
+
                     $location.path('/listTests').search({});
                 });
-        };
+        }
 
 
         function cancelTest() {

@@ -23,7 +23,7 @@
 }
 
 /*Styling a required element*/
-.form-group.required .control-label:after { 
+.form-group.required .control-label:after, .required:after { 
     color: #d00;
     content: "*";
     position: absolute;

@@ -11,10 +11,14 @@
     function ListTestsController($scope, testService, $location, notificationsService) {
 
         //Init variables
-        $scope.sql_offset = $scope.$parent.sql_offset_default;
+        if ( $scope.$parent.testCreatedOrUpdated > $scope.$parent.NO_TEST_CREATED ) {
+            var sql_offset = $scope.$parent.sql_offset_current_list_tests;    
+        } else {
+            var sql_offset = $scope.$parent.sql_offset_default;
+        }
 
         //Initial load
-        loadTestsData($scope.sql_limit, $scope.sql_offset);
+        loadTestsData($scope.sql_limit, sql_offset);
 
 
         //Pass to scope some functions
@@ -44,7 +48,7 @@
                 testService
                     .deleteTest(testId)
                     .then(function () {
-                        loadTestsData($scope.sql_limit, $scope.sql_offset);
+                        loadTestsData($scope.sql_limit, sql_offset);
                     });
             }
         }

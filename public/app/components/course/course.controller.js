@@ -11,10 +11,10 @@
     function CourseController($scope, $http, courseService) {
 
         //Init variables
-        $scope.sql_offset = $scope.$parent.sql_offset_default;
+        var sql_offset = $scope.$parent.sql_offset_default;
 
         //Initial load
-        loadCoursesData($scope.sql_limit, $scope.sql_offset);
+        loadCoursesData($scope.sql_limit, sql_offset);
 
         //Pass to scope some functions
         $scope.loadCoursesData = loadCoursesData;
@@ -34,7 +34,7 @@
                 courseService
                     .deleteCourse(id)
                     .then(function () {
-                        $scope.loadCoursesData($scope.sql_limit, $scope.sql_offset); 
+                        $scope.loadCoursesData($scope.sql_limit, sql_offset); 
                     });
             }
         };

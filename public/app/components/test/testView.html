@@ -6,7 +6,7 @@
     <div class="row">
         <div ng-show="isNewTest()">
             <div class="col-md-6">
-                <label for="testName">{{'TEST_NAME' | translate}}:</label>
+                <label for="testName" class="required">{{'TEST_NAME' | translate}}:</label>&nbsp;
                 <input type="text" id="testName" ng-model="testName">   
             </div>
             <div class="col-md-6">
@@ -23,7 +23,7 @@
     <div class="row">
         <div ng-hide="isNewTest()">
             <div class="col-md-6">
-                <h3>{{'TEST_FORM_LABEL_COURSE_NAME' | translate}}:</h3>
+                <h3>{{'TEST_FORM_LABEL_COURSE_NAME' | translate}}: </h3>
             </div>
             <div class="col-md-6">
                 <h3>
@@ -61,13 +61,12 @@
             </div>
         </div>
 
-        <div ng-show="studentList.length">
-            <div >
-                <button type="button" class="btn btn-lg btn-primary" ng-click="saveTest()" ng-disabled="isNotValidTest()">{{'TEST_FORM_SAVE_TEST' | translate}}</button>
-                &nbsp;
-                <button type="button" class="btn btn-lg btn-primary" ng-click="cancelTest()">{{'TEST_FORM_TEST_CANCEL' | translate}}</button>  
-            </div>
+        <div >
+            <button type="button" class="btn btn-lg btn-primary" ng-click="saveTest()" ng-disabled="isNotValidTest()">{{'TEST_FORM_SAVE_TEST' | translate}}</button>
+            &nbsp;
+            <button type="button" class="btn btn-lg btn-primary" ng-click="cancelTest()">{{'TEST_FORM_TEST_CANCEL' | translate}}</button>  
         </div>
+
 
 
 

@@ -51,13 +51,13 @@ function PopUpCreateUpdateStudentController($scope, $uibModal, $http, studentSer
 
                         //select correct page number
                         if(detailsStudent.student.id === undefined) {
-                            $scope.$parent.sql_offset = (Math.floor((studentService.totalItems ) / itemsPerPage)) * itemsPerPage;
+                            var sql_offset = (Math.floor((studentService.totalItems ) / itemsPerPage)) * itemsPerPage;
                         } else {
-                            $scope.$parent.sql_offset = $scope.sql_offset;
+                            var sql_offset = $scope.sql_offset_current;
                         }
 
                         var nextPage = Math.ceil((studentService.totalItems + 1) / itemsPerPage);
-                        $scope.loadStudentsData($scope.sql_limit, $scope.$parent.sql_offset)
+                        $scope.loadStudentsData($scope.sql_limit, sql_offset)
                             .then($timeout($scope.setPage, 10, true, nextPage));
                     });
 

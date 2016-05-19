@@ -1,4 +1,4 @@
-<div >
+<div>
     <div class="page-header">
         <h1>List of all tests</h1>
     </div>
@@ -42,8 +42,8 @@
 
 
     <div ng-controller="PaginationController">
-        <div>
-            <uib-pagination items-per-page="itemsPerPage" total-items="getTotalItems()" ng-model="currentPage" ng-change="pageChanged('test')" ng-show="showPagination()"></uib-pagination>
+        <div ng-show="show">
+            <uib-pagination items-per-page="itemsPerPage" total-items="getTotalItems()" ng-model="currentPage" ng-change="pageChanged('test')"></uib-pagination>
         </div>
         <div>
             <button  type="button" class="btn btn-lg btn-primary" ng-click="delNotifications();openTestForm()">

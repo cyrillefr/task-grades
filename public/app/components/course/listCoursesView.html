@@ -44,7 +44,7 @@
 
 
     <div ng-controller="PaginationController">
-        <div ng-show="showPagination()">
+        <div ng-show="show">
             <uib-pagination items-per-page="itemsPerPage" total-items="getTotalItems()" ng-model="currentPage" ng-change="pageChanged('course')" ></uib-pagination>
         </div>
 
