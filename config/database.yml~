@@ -1,0 +1,8 @@
+development:
+    adapter: postgresql
+    database: grades
+    pool: 5
+    username: grades
+    password: grades
+    host: localhost
+    encoding: utf8
