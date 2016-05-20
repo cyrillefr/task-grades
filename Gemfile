@@ -11,8 +11,9 @@ gem 'rack' ,'1.6.4'
 #gem 'mysql2', '0.4.2'
 gem 'pg', '~> 0.18.4'
 
+gem 'rake', '~> 10.4.2'
+
 group :development, :test do
     gem 'rspec', '3.4.0'
     gem 'rack-test' ,'0.6.3'
-    gem 'i18n-debug', '1.1.0' 
 end
