@@ -54,7 +54,7 @@ class MyStudentsGradesApp < Sinatra::Base
 
     
     get '/' do
-        "Hello there"
+        redirect to ('/students')
     end
 
     get '/update_locale/:locale' do 
