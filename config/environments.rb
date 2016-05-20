@@ -6,6 +6,7 @@ class Sinatra::Base
             #public files
             set :static, true
             enable :sessions
+            use Rack::Protection::JsonCsrf
             set :logging, Logger::DEBUG
             #localization
             I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
