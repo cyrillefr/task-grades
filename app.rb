@@ -40,22 +40,20 @@ class MyStudentsGradesApp < Sinatra::Base
     MyStudentsGradesApp.set_configuration
 
 
-    #default
-    returned_http_status_code = 200
 
     #JSON API
     before do 
-        #otherwise value gets stuck to the latest set and never get back to default
-        returned_http_status_code = 200 
+        status 200
         content_type :json 
         I18n.locale = settings.locale
-         I18n.locale =  session['locale'] || settings.locale
+        I18n.locale =  session['locale'] || settings.locale
     end
 
     
     get '/' do
-        redirect to ('/students')
+        redirect '/students'
     end
+
 
     get '/update_locale/:locale' do 
         session['locale'] = params[:locale]
@@ -77,7 +75,7 @@ class MyStudentsGradesApp < Sinatra::Base
 
         res = create_student request_payload
         unless (res == true)
-            returned_http_status_code = 500
+            status 500
             logger.error res
             {:errors => res}.to_json
         end      
@@ -92,7 +90,7 @@ class MyStudentsGradesApp < Sinatra::Base
     delete '/api/student/delete/:id' do
         res = delete_student params[:id]
         unless (res == true)
-            returned_http_status_code = 500
+            status 500
             logger.error res
             {:errors => res}.to_json
         end
@@ -107,7 +105,7 @@ class MyStudentsGradesApp < Sinatra::Base
 
         res = update_student_details request_payload
         unless (res == true)
-            returned_http_status_code = 500
+            status 500
             logger.error res
             {:errors => res}.to_json
         end
@@ -140,7 +138,7 @@ class MyStudentsGradesApp < Sinatra::Base
 
         res = create_course request_payload['number'], request_payload['name']
         unless (res == true)
-            returned_http_status_code = 500
+            status 500
             logger.error res
             {:errors => res}.to_json
         end     
@@ -159,7 +157,7 @@ class MyStudentsGradesApp < Sinatra::Base
 
         res = update_course request_payload
         unless (res == true)
-            returned_http_status_code = 500
+            status 500
             logger.error res
             {:errors => res}.to_json
         end
@@ -169,7 +167,7 @@ class MyStudentsGradesApp < Sinatra::Base
     delete '/api/course/delete/:id' do
         res = delete_course params[:id]
         unless (res == true)
-            returned_http_status_code = 500
+            status 500
             logger.error res
             {:errors => res}.to_json
         end        
@@ -198,7 +196,7 @@ class MyStudentsGradesApp < Sinatra::Base
 
         res = create_test request_payload
         unless (res == true)
-            returned_http_status_code = 500
+            status 500
             logger.error res
             {:errors => res}.to_json
         end   
@@ -211,7 +209,7 @@ class MyStudentsGradesApp < Sinatra::Base
 
         res = update_test_details request_payload
         unless (res == true)
-            returned_http_status_code = 500
+            status 500
             logger.error res
             {:errors => res}.to_json
         end
@@ -221,16 +219,12 @@ class MyStudentsGradesApp < Sinatra::Base
     delete '/api/test/delete/:id' do
         res = delete_test params[:id]
         unless (res == true)
-            returned_http_status_code = 500
+            status 500
             logger.error res
             {:errors => res}.to_json
         end
     end
 
 
-
-    after do 
-        status returned_http_status_code
-    end
 
 end
