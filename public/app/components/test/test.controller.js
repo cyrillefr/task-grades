@@ -21,16 +21,15 @@
                 $scope.selectedCourse = testService.selectedCourse
                 $scope.courseName = testService.courseName;
                 $scope.testId = testService.testId;
-                $translate('TEST_LABEL_UPDATE_THIS_TEST').then(function(translation){
-                    $scope.titlePageTest = translation + ": " + testService.testName; 
-                });
+
+                $scope.titlePageTest = 'TEST_LABEL_UPDATE_THIS_TEST';
+                $scope.testName = testService.testName; 
                 loadStudentsGradesForTest($routeParams.test_id);
 
             });
         } else {
-            $translate('TEST_LABEL_CREATE_NEW_TEST').then(function(translation){
-                    $scope.titlePageTest = translation;
-                });
+            $scope.titlePageTest = 'TEST_LABEL_CREATE_NEW_TEST';
+
             $scope.status='new';
             populateCourseSelect();
         }
