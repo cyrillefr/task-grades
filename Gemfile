@@ -9,7 +9,7 @@ gem 'i18n'
 gem 'i18n-debug'
 gem 'pg'
 gem 'rack'
-gem 'sinatra', '~> 1.4', '>= 1.4.7'
+gem 'sinatra', '~> 4.1'
 gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.9'
 
 gem 'rake'
